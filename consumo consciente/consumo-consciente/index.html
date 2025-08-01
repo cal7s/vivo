@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Trade Já</title>
+    <!-- Google Fonts: RocknRoll One -->
+    <link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            background: #111;
+            /* Melhora a resolução da imagem de fundo em telas retina */
+            background-image: image-set(
+                url('https://cdn.openart.ai/uploads/image_fgDqZudr_1754005077482_raw.jpg') 1x,
+                url('https://cdn.openart.ai/uploads/image_fgDqZudr_1754005077482_raw.jpg') 2x
+            );
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'RocknRoll One', Arial, Helvetica, sans-serif;
+        }
+        .container {
+            background: rgba(255,255,255,0.92);
+            border-radius: 24px;
+            box-shadow: none; /* Removido o borrado/sombra */
+            padding: 48px 36px;
+            max-width: 540px;
+            width: 95%;
+            text-align: center;
+            backdrop-filter: blur(2px);
+            border: 4px solid #111; /* borda preta */
+        }
+        h1 {
+            color: #111;
+            font-size: 3.2rem;
+            margin-bottom: 32px;
+            letter-spacing: 2.5px;
+            /* Sem brilho neon */
+            text-shadow: none;
+        }
+        p {
+            color: #111;
+            font-size: 1.25rem;
+            margin: 18px 0 28px 0;
+        }
+        .cta {
+            color: #fff;
+            background: linear-gradient(90deg, #111 60%, #888 100%);
+            padding: 14px 32px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.15rem;
+            transition: 
+                background 0.2s, 
+                box-shadow 0.2s, 
+                text-shadow 0.2s;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+            display: inline-block;
+            border: none;
+            margin-top: 10px;
+            outline: none;
+        }
+        .cta:hover, .cta:focus {
+            background: linear-gradient(90deg, #222 60%, #A8988F 100%);
+            box-shadow:
+                0 0 8px s#A8988F,
+                0 0 16px #A8988F,
+                0 4px 18px rgba(0,0,0,0.22);
+            text-shadow:
+                0 0 8px #A8988F,
+                0 0 16px #A8988F;
+        }
+        .destaque-citacao {
+            margin: 0 0 28px 0;
+            padding: 18px 22px;
+            font-size: 1.18rem;
+            color: #111;
+            background: rgba(240,240,240,0.85);
+            border-left: 5px solid #111;
+            border-radius: 12px;
+            font-family: 'RocknRoll One', Arial, Helvetica, sans-serif;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            text-align: center;
+        }
+        .destaque-citacao span {
+            display: block;
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #444;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px 8px;
+            }
+            h1 {
+                font-size: 1.7rem;
+            }
+            p, .features li {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Trade Já</h1>
+        <blockquote class="destaque-citacao">
+            “A moda é um dos maiores poluidores do mundo. Mas nós temos o poder de mudar isso com nossas escolhas.”<br>
+            <span>— Emma Watson, atriz e ativista da moda sustentável.</span>
+        </blockquote>
+        <a class="cta" href="sobre.html">Saiba mais sobre como funciona</a>
+    </div>
+</body>
+</html>
