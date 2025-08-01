@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Loja Digital - Trade Já</title>
+    <link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #111;
+            background-image: url('https://cdn.openart.ai/uploads/image_fgDqZudr_1754005077482_raw.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: 'RocknRoll One', Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .top-bar {
+            background: #222;
+            color: #fff;
+            padding: 24px 0 18px 0;
+            text-align: left;
+            font-size: 2.2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .top-bar-logo {
+            margin-left: 38px;
+            font-size: 2.2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        .top-bar-links {
+            margin-right: 38px;
+        }
+        .top-bar-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            margin-left: 28px;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+        .top-bar-links a:hover {
+            color: #FFD700;
+        }
+        .search-bar {
+            width: 100%;
+            max-width: 420px;
+            margin: 32px auto 0 auto;
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.13);
+            padding: 8px 18px;
+        }
+        .search-bar input {
+            border: none;
+            outline: none;
+            font-size: 1.15rem;
+            flex: 1;
+            background: transparent;
+            color: #222;
+            font-family: 'RocknRoll One', Arial, Helvetica, sans-serif;
+        }
+        .search-bar button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.35rem;
+            color: #222;
+            margin-left: 8px;
+            transition: color 0.2s;
+        }
+        .search-bar button:hover {
+            color: #FFD700;
+        }
+        .banner {
+            width: 100%;
+            height: 220px;
+            background: #0a2342;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 2.2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 12px #222, 0 0 8px #0a2342;
+        }
+        .loja-container {
+            max-width: 1200px;
+            margin: 32px auto 0 auto;
+            padding: 0 12px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+        .produto {
+            background: rgba(255,255,255,0.97);
+            border-radius: 20px;
+            border: 3px solid #222;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+            padding: 38px 28px 28px 28px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            transition: box-shadow 0.2s, border 0.2s;
+        }
+        .produto:hover {
+            box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+            border: 3px solid #FFD700;
+        }
+        .favorito-btn {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            background: #fff;
+            border: 2px solid #222;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.13);
+            transition: border 0.2s;
+            font-size: 1.3rem;
+        }
+        .favorito-btn:hover {
+            border: 2px solid #FFD700;
+        }
+        .produto-img {
+            width: 260px;
+            height: 180px;
+            border-radius: 16px;
+            object-fit: contain;
+            background: #eee;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+            margin-bottom: 18px;
+        }
+        .produto-nome {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 2px;
+            text-align: left;
+            width: 100%;
+            color: #222;
+        }
+        .produto-categoria {
+            font-size: 1.05rem;
+            color: #444;
+            margin-bottom: 6px;
+            text-align: left;
+            width: 100%;
+        }
+        .produto-preco {
+            font-size: 1.18rem;
+            color: #111;
+            font-weight: bold;
+            margin-bottom: 2px;
+            text-align: left;
+            width: 100%;
+        }
+        .produto-preco-antigo {
+            font-size: 1rem;
+            color: #888;
+            text-decoration: line-through;
+            margin-left: 8px;
+        }
+        .produto-desconto {
+            font-size: 1rem;
+            color: #43a047;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        .estrelas {
+            color: #FFD700;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            text-align: left;
+            width: 100%;
+        }
+        .estrelas span {
+            background:#222;
+            padding:2px 8px;
+            border-radius:6px;
+            font-size:0.95rem;
+            color:#FFD700;
+            margin-left:6px;
+        }
+        .acoes {
+            display: flex;
+            gap: 14px;
+            margin-top: 18px;
+        }
+        .btn {
+            padding: 12px 28px;
+            border-radius: 12px;
+            border: none;
+            font-weight: bold;
+            font-size: 1.08rem;
+            cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+        }
+        .btn-comprar {
+            background: #222;
+            color: #FFD700;
+        }
+        .btn-trocar {
+            background: #FFD700;
+            color: #222;
+        }
+        .btn-detalhes {
+            background: #fff;
+            color: #222;
+        }
+        .btn:hover {
+            filter: brightness(0.96);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+        }
+        @media (max-width: 700px) {
+            .loja-container {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+            .produto {
+                padding: 18px 6px;
+            }
+            .produto-img {
+                width: 100%;
+                height: 140px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <span class="top-bar-logo">Trade Já</span>
+        <span class="top-bar-links">
+            <a href="consumo-consciente/marcacção/loja.html">Loja Alternativa</a>
+            <a href="#">Produtos</a>
+            <a href="#">Ofertas</a>
+            <a href="#">Contato</a>
+        </span>
+    </div>
+    <form class="search-bar" action="#" method="get">
+        <input type="text" placeholder="Pesquisar produto..." name="q" />
+        <button type="submit" title="Pesquisar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 20 20"><path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l4.25 4.25a1 1 0 0 1-1.41 1.41l-4.25-4.25zm-5.9-1.32a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"/></svg>
+        </button>
+    </form>
+    <div class="banner">Promoções imperdíveis para você!</div>
+    <div class="loja-container">
+        <!-- Produto 1 -->
+        <div class="produto">
+            <button class="favorito-btn" title="Favoritar">&#9825;</button>
+            <img src="https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/2b7e2e2e-2e2e-4e2e-8e2e-2e2e2e2e2e2e/tenis-nike-zoomx-vaporfly-4-masculino.jpg" alt="Tênis Nike ZoomX VaporFly 4" class="produto-img" />
+            <div class="produto-nome">Tênis Nike ZoomX VaporFly 4 Masculino</div>
+            <div class="produto-categoria">Corrida</div>
+            <div class="produto-preco">R$ 2184,99 no Pix <span class="produto-preco-antigo">R$ 2.299,99</span> <span class="produto-desconto">5% off</span></div>
+            <div class="estrelas">&#9733;&#9733;&#9733;&#9733;&#9733; <span>5.0</span></div>
+            <div class="acoes">
+                <button class="btn btn-comprar">Comprar</button>
+                <button class="btn btn-trocar">Trocar</button>
+                <button class="btn btn-detalhes">Detalhes</button>
+            </div>
+        </div>
+        <!-- Produto 2 -->
+        <div class="produto">
+            <button class="favorito-btn" title="Favoritar">&#9825;</button>
+            <img src="https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/2b7e2e2e-2e2e-4e2e-8e2e-2e2e2e2e2e2e/tenis-nike-zoomx-vaporfly-4-masculino.jpg" alt="Tênis Nike ZoomX VaporFly 4 Azul" class="produto-img" />
+            <div class="produto-nome">Tênis Nike ZoomX VaporFly 4 Masculino</div>
+            <div class="produto-categoria">Corrida</div>
+            <div class="produto-preco">R$ 2184,99 no Pix <span class="produto-preco-antigo">R$ 2.299,99</span> <span class="produto-desconto">5% off</span></div>
+            <div class="estrelas">&#9733;&#9733;&#9733;&#9733;&#9733; <span>5.0</span></div>
+            <div class="acoes">
+                <button class="btn btn-comprar">Comprar</button>
+                <button class="btn btn-trocar">Trocar</button>
+                <button class="btn btn-detalhes">Detalhes</button>
+            </div>
+        </div>
+        <!-- Produto 3 -->
+        <div class="produto">
+            <button class="favorito-btn" title="Favoritar">&#9825;</button>
+            <img src="https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/2b7e2e2e-2e2e-4e2e-8e2e-2e2e2e2e2e2e/tenis-nike-zoomx-vaporfly-4-masculino.jpg" alt="Tênis Nike ZoomX VaporFly 4 Vermelho" class="produto-img" />
+            <div class="produto-nome">Tênis Nike ZoomX VaporFly 4 Masculino</div>
+            <div class="produto-categoria">Corrida</div>
+            <div class="produto-preco">R$ 2184,99 no Pix <span class="produto-preco-antigo">R$ 2.299,99</span> <span class="produto-desconto">5% off</span></div>
+            <div class="estrelas">&#9733;&#9733;&#9733;&#9733;&#9733; <span>5.0</span></div>
+            <div class="acoes">
+                <button class="btn btn-comprar">Comprar</button>
+                <button class="btn btn-trocar">Trocar</button>
+                <button class="btn btn-detalhes">Detalhes</button>
+            </div>
+        </div>
+        <!-- Adicione mais produtos aqui -->
+    </div>
+</body>
+</html>
