@@ -1,3 +1,4 @@
+// conexao.js
 const mysql = require('mysql2');
 require('dotenv').config();
 
@@ -9,8 +10,12 @@ const conexao = mysql.createConnection({
 });
 
 conexao.connect(err => {
-  if (err) throw err;
+  if (err) {
+    console.error('Erro ao conectar ao MySQL:', err.message);
+    process.exit(1);
+  }
   console.log('Conectado ao MySQL');
 });
 
 module.exports = conexao;
+
