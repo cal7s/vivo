@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>ℛℯ𝒰𝓈ℯ 𝒿ℴ𝓋ℯ𝓂 - Troque ou Venda Roupas</title>
+    <link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            background: #fff;
+            font-family: 'RocknRoll One', Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .top-bar {
+            background: #111; /* preto */
+            color: #FFD700;
+            padding: 0;
+            min-height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+        }
+        .top-bar-logo {
+            font-size: 2rem;
+            font-family: 'RocknRoll One', Arial, Helvetica, sans-serif;
+            color: #FFD700;
+            margin-left: 32px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        .search-bar {
+            margin-left: 48px;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            max-width: 420px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 0 16px;
+            height: 44px;
+        }
+        .search-bar input {
+            border: none;
+            outline: none;
+            font-size: 1.1rem;
+            flex: 1;
+            background: transparent;
+            color: #222;
+            font-family: 'RocknRoll One', Arial, Helvetica, sans-serif;
+        }
+        .search-bar button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.7rem;
+            color: #111; /* preta */
+            margin-left: 8px;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cart-user-area {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-right: 32px;
+        }
+        .cart-btn {
+            color: #fff;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0 8px;
+        }
+        .user-btn {
+            background: #111; /* preto */
+            color: #FFD700;
+            border-radius: 8px;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-weight: bold;
+            gap: 10px;
+        }
+        .user-btn i {
+            font-size: 1.5rem;
+            color: #FFD700;
+        }
+        .user-btn div {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .user-btn .main {
+            font-weight: bold;
+        }
+        .user-btn .sub {
+            font-size: 0.98rem;
+        }
+        .faixa-branca-menu {
+            background: #fff;
+            border-bottom: 1px solid #ccc;
+            padding: 0;
+            margin: 0;
+            margin-bottom: 32px;
+        }
+        .faixa-branca-menu nav {
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 48px;
+            height: 28px;
+        }
+        .faixa-branca-menu a {
+            color: #111; /* preto */
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        .banner {
+            width: 100%;
+            height: 100px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            color: #111; /* preto */
+            font-size: 1.4rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            padding-left: 32px;
+            border-bottom: 1px solid #eee;
+        }
+        .produtos-header {
+            max-width: 1200px;
+            margin: 32px auto 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1.1rem;
+            color: #222;
+        }
+        .produtos-header .total {
+            font-weight: normal;
+        }
+        .produtos-header .ordenar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .produtos-header select {
+            font-size: 1rem;
+            padding: 4px 8px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        .loja-container {
+            max-width: 1200px;
+            margin: 24px auto 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .produto {
+            background: #fff;
+            border-radius: 16px;
+            border: 2px solid #ddd;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 24px 18px 18px 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            position: relative;
+            min-height: 420px;
+            transition: box-shadow 0.2s, border 0.2s;
+        }
+        .produto:hover {
+            box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+            border: 3px solid #FFD700;
+        }
+        .favorito-btn {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: #fff;
+            border: 2px solid #222;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.13);
+            font-size: 1.1rem;
+        }
+        .favorito-btn:hover {
+            border: 2px solid #FFD700;
+        }
+        .produto-img {
+            width: 180px;
+            height: 140px;
+            object-fit: contain;
+            margin: 0 auto 12px auto;
+            display: block;
+            border-radius: 8px;
+            background: #f7f7f7;
+        }
+        .produto-nome {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 4px;
+            color: #222;
+        }
+        .produto-categoria {
+            font-size: 0.98rem;
+            color: #888;
+            margin-bottom: 8px;
+        }
+        .produto-preco {
+            font-size: 1.15rem;
+            color: #d32f2f;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+        .produto-preco-antigo {
+            font-size: 1rem;
+            color: #888;
+            text-decoration: line-through;
+            margin-left: 8px;
+        }
+        .produto-desconto {
+            font-size: 1rem;
+            color: #43a047;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        .estrelas {
+            color: #FFD700;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        .produto-descricao {
+            font-size: 0.98rem;
+            color: #444;
+            margin-bottom: 10px;
+        }
+        .variacoes {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .variacao-btn {
+            background: #eee;
+            border: none;
+            border-radius: 6px;
+            padding: 3px 10px;
+            font-size: 0.95rem;
+            color: #222;
+            cursor: pointer;
+        }
+        .acoes {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+            width: 100%;
+        }
+        .btn {
+            padding: 7px 14px;
+            border-radius: 8px;
+            border: none;
+            font-weight: bold;
+            font-size: 0.98rem;
+            cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.13);
+            min-width: 0;
+            flex: 1 1 0;
+            max-width: 110px;
+            white-space: nowrap;
+        }
+        .btn-comprar {
+            background: #222;
+            color: #FFD700;
+        }
+        .btn-trocar {
+            background: #FFD700;
+            color: #222;
+        }
+        .btn-detalhes {
+            background: #fff;
+            color: #222;
+        }
+        .btn:hover {
+            filter: brightness(0.96);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+        }
+    </style>
+</head>
+<body>
+    <div style="display: flex; max-width: 1440px; margin: 0 auto;">
+        <!-- Barra lateral de filtros -->
+        <aside style="width: 260px; background: #fff; border-right: 1px solid #eee; padding: 32px 18px 0 18px; min-height: 100vh;">
+            <h3 style="color:#111; font-size:1.2rem; margin-bottom:18px;">Filtrar produtos</h3>
+            <div style="margin-bottom:24px;">
+                <strong style="color:#222;">Categorias</strong>
+                <div style="margin-top:8px;">
+                    <label><input type="checkbox"> Masculino</label><br>
+                    <label><input type="checkbox"> Feminino</label><br>
+                    <label><input type="checkbox"> Infantil</label><br>
+                    <label><input type="checkbox"> Calçados</label><br>
+                    <label><input type="checkbox"> Acessórios</label><br>
+                    <label><input type="checkbox"> Esportivo</label><br>
+                    <label><input type="checkbox"> Vintage</label><br>
+                    <label><input type="checkbox"> Promoções</label>
+                </div>
+            </div>
+            <div style="margin-bottom:24px;">
+                <strong style="color:#222;">Preço</strong>
+                <div style="margin-top:8px;">
+                    <input type="range" min="0" max="500" style="width:90%;">
+                    <div style="font-size:0.95rem; color:#444;">Até R$ 500</div>
+                </div>
+            </div>
+            <div style="margin-bottom:24px;">
+                <strong style="color:#222;">Tamanho</strong>
+                <div style="margin-top:8px;">
+                    <label><input type="checkbox"> P</label>
+                    <label><input type="checkbox"> M</label>
+                    <label><input type="checkbox"> G</label>
+                    <label><input type="checkbox"> GG</label>
+                    <label><input type="checkbox"> Único</label>
+                </div>
+            </div>
+        </aside>
+        <!-- Conteúdo principal -->
+        <div style="flex:1;">
+            <div class="top-bar" style="position: relative;">
+                <div class="top-bar-logo">ℛℯ𝒰𝓈ℯ 𝒿ℴ𝓋ℯ𝓂</div>
+                <form class="search-bar" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); margin: 0; max-width: 420px; width: 100%;">
+                    <input type="text" placeholder="o que você procura?">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+                <div class="cart-user-area" style="position: absolute; top: 50%; right: 32px; transform: translateY(-50%); display: flex; align-items: center; gap: 18px;">
+                    <a href="#" class="user-btn">
+                        <i class="fas fa-user"></i>
+                        <div>
+                            <div class="main">Entre ou cadastre-se</div>
+                            <div class="sub">Meus pedidos</div>
+                        </div>
+                    </a>
+                    <a href="#" class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="faixa-branca-menu">
+                <nav>
+                    <a href="#">Masculino</a>
+                    <a href="#">Feminino</a>
+                    <a href="#">Infantil</a>
+                    <a href="#">Calçados</a>
+                    <a href="#">Acessórios</a>
+                    <a href="#">Esportivo</a>
+                    <a href="#">Vintage</a>
+                    <a href="#">Promoções</a>
+                </nav>
+            </div>
+            <div class="banner">
+                Troque ou venda suas roupas online!
+            </div>
+            <div class="produtos-header">
+                <span class="total">Encontramos mais de 10.000 produtos</span>
+                <div class="ordenar">
+                    <label for="ordenar">Ordenar por</label>
+                    <select id="ordenar">
+                        <option>Relevância</option>
+                        <option>Menor preço</option>
+                        <option>Maior preço</option>
+                        <option>Mais vendidos</option>
+                    </select>
+                </div>
+            </div>
+            <div class="loja-container">
+                <div class="produto">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" alt="Camisa Polo Masculina" class="produto-img">
+                    <div class="favorito-btn"><i class="fa-regular fa-heart"></i></div>
+                    <div class="estrelas">★★★★★</div>
+                    <div class="produto-nome">Camisa Polo Masculina ASICS Manga Curta Botões</div>
+                    <div class="produto-categoria">Casual</div>
+                    <div class="produto-descricao">Seja para um look descontraído ou um visual mais arrumado, a Camisa Polo ASICS é a escolha perfeita para homens que valorizam o estilo sem abrir mão do conforto.</div>
+                    <div class="variacoes">
+                        <button class="variacao-btn">2 cores</button>
+                        <button class="variacao-btn">Tamanho único</button>
+                    </div>
+                    <div class="produto-preco">R$ 89,99 <span class="produto-preco-antigo">R$ 149,99</span> <span class="produto-desconto">-40%</span></div>
+                    <div class="acoes">
+                        <button class="btn btn-comprar">Comprar</button>
+                        <button class="btn btn-trocar">Trocar</button>
+                        <button class="btn btn-detalhes">Detalhes</button>
+                    </div>
+                </div>
+                <div class="produto">
+                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=400&q=80" alt="Tênis Nike Revolution 7 Masculino" class="produto-img">
+                    <div class="favorito-btn"><i class="fa-regular fa-heart"></i></div>
+                    <div class="estrelas">★★★★★</div>
+                    <div class="produto-nome">Tênis Nike Revolution 7 Masculino</div>
+                    <div class="produto-categoria">Esportivo</div>
+                    <div class="produto-descricao">Conforto e desempenho para suas corridas. O Nike Revolution 7 é a escolha ideal para quem busca conforto e alto desempenho.</div>
+                    <div class="variacoes">
+                        <button class="variacao-btn">13 cores</button>
+                        <button class="variacao-btn">6 tamanhos</button>
+                    </div>
+                    <div class="produto-preco">R$ 299,99 <span class="produto-preco-antigo">R$ 399,99</span> <span class="produto-desconto">-25%</span></div>
+                    <div class="acoes">
+                        <button class="btn btn-comprar">Comprar</button>
+                        <button class="btn btn-trocar">Trocar</button>
+                        <button class="btn btn-detalhes">Detalhes</button>
+                    </div>
+                </div>
+                <div class="produto">
+                    <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=400&q=80" alt="Bola de Vôlei Adams" class="produto-img">
+                    <div class="favorito-btn"><i class="fa-regular fa-heart"></i></div>
+                    <div class="estrelas">★★★★★</div>
+                    <div class="produto-nome">Bola de Vôlei Adams</div>
+                    <div class="produto-categoria">Esportivo</div>
+                    <div class="produto-descricao">Chame os amigos e combine um treino de Vôlei ao lado da Bola Adams. Qualidade Adams em todos os detalhes.</div>
+                    <div class="variacoes">
+                        <button class="variacao-btn">Cor única</button>
+                        <button class="variacao-btn">Tamanho único</button>
+                    </div>
+                    <div class="produto-preco">R$ 44,99 <span class="produto-preco-antigo">R$ 99,99</span> <span class="produto-desconto">-55%</span></div>
+                    <div class="acoes">
+                        <button class="btn btn-comprar">Comprar</button>
+                        <button class="btn btn-trocar">Trocar</button>
+                        <button class="btn btn-detalhes">Detalhes</button>
+                    </div>
+                </div>
+                <div class="produto">
+                    <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Conjunto Esportivo Masculino" class="produto-img">
+                    <div class="favorito-btn"><i class="fa-regular fa-heart"></i></div>
+                    <div class="estrelas">★★★★★</div>
+                    <div class="produto-nome">Conjunto Esportivo Masculino</div>
+                    <div class="produto-categoria">Esportivo</div>
+                    <div class="produto-descricao">Ideal para treinos e atividades físicas, com tecido leve e confortável.</div>
+                    <div class="variacoes">
+                        <button class="variacao-btn">3 tamanhos</button>
+                    </div>
+                    <div class="produto-preco">R$ 79,99 <span class="produto-preco-antigo">R$ 129,99</span> <span class="produto-desconto">-37%</span></div>
+                    <div class="acoes">
+                        <button class="btn btn-comprar">Comprar</button>
+                        <button class="btn btn-trocar">Trocar</button>
+                        <button class="btn btn-detalhes">Detalhes</button>
+                    </div>
+                </div>
+                <div class="produto">
+                    <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=400&q=80" alt="Joelheira Esportiva" class="produto-img">
+                    <div class="favorito-btn"><i class="fa-regular fa-heart"></i></div>
+                    <div class="estrelas">★★★★★</div>
+                    <div class="produto-nome">Joelheira Esportiva</div>
+                    <div class="produto-categoria">Acessórios</div>
+                    <div class="produto-descricao">Proteção e conforto para seus treinos de impacto.</div>
+                    <div class="variacoes">
+                        <button class="variacao-btn">2 tamanhos</button>
+                    </div>
+                    <div class="produto-preco">R$ 29,99 <span class="produto-preco-antigo">R$ 41,99</span> <span class="produto-desconto">-28%</span></div>
+                    <div class="acoes">
+                        <button class="btn btn-comprar">Comprar</button>
+                        <button class="btn btn-trocar">Trocar</button>
+                        <button class="btn btn-detalhes">Detalhes</button>
+                    </div>
+                </div>
+                <div class="produto">
+                    <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Bermuda Esportiva Masculina" class="produto-img">
+                    <div class="favorito-btn"><i class="fa-regular fa-heart"></i></div>
+                    <div class="estrelas">★★★★★</div>
+                    <div class="produto-nome">Bermuda Esportiva Masculina</div>
+                    <div class="produto-categoria">Esportivo</div>
+                    <div class="produto-descricao">Ideal para treinos e corridas, tecido leve e resistente.</div>
+                    <div class="variacoes">
+                        <button class="variacao-btn">4 tamanhos</button>
+                    </div>
+                    <div class="produto-preco">R$ 49,99 <span class="produto-preco-antigo">R$ 91,99</span> <span class="produto-desconto">-46%</span></div>
+                    <div class="acoes">
+                        <button class="btn btn-comprar">Comprar</button>
+                        <button class="btn btn-trocar">Trocar</button>
+                        <button class="btn btn-detalhes">Detalhes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
